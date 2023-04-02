@@ -6,7 +6,7 @@ import os
 import cv2
 import subprocess
 import natsort
-from concate_video  import concatenate_videos
+from concate_videos  import concatenate_videos
 import re
 
 Sample: Dict[str, any] = {
