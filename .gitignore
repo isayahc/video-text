@@ -1,0 +1,22 @@
+/.env
+/__pycache__
+
+# .gitignore
+
+# Python
+*.pyc
+__pycache__/
+
+# Virtual environment
+venv/
+
+# Environment variables
+.env
+*.mp4
+*.mp3
+
+#other
+/data_sample
+/Roboto
+/temp
+/videos
