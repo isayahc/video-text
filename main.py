@@ -2,7 +2,7 @@ import os
 import tempfile
 from moviepy.editor import concatenate_videoclips, VideoFileClip
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
-# from vid_sample import video_to_dir, add_text_on_image, convert_jpg_to_mp4
+
 from utils import video_to_dir, add_text_on_image, convert_jpg_to_mp4
 from typing import List, Dict, Tuple
 
@@ -49,7 +49,9 @@ def add_text_to_video(input_file: str, output_file: str, text_instructions: list
                 for frame_file in frame_files:
                     add_text_on_image(instruction["font_file_location"], 
                                       instruction["font_size"], instruction["text"], 
-                                      frame_file, frame_file, **{k: v for k, v in instruction.items() if k not in {"start", "end", "text", "font_file_location", "font_size"}})
+                                      frame_file, 
+                                      frame_file, 
+                                      **{k: v for k, v in instruction.items() if k not in {"start", "end", "text", "font_file_location", "font_size"}})
 
                 # Convert the frames with text back to a subclip and store it in subclip_output
                 subclip_output = f"{tmp_frames_dir}_modified.mp4"
@@ -64,7 +66,7 @@ def add_text_to_video(input_file: str, output_file: str, text_instructions: list
 
 if __name__ == '__main__':
     # Example usage:
-    input_file = r"C:\Users\isaya\Desktop\erza_miller_strange_rant.mp4"
+    input_file = r"Desktop\erza_miller_strange_rant.mp4"
     output_file = "output_video.mp4"
     text_instructions = [
         {"start": 0, "end": 10, "text": "Text ", "font_file_location": r"Roboto\Roboto-Light.ttf", "font_size": 50,"text_color":(255,255,255), "stroke":1,},
