@@ -2,7 +2,8 @@ import os
 import tempfile
 from moviepy.editor import concatenate_videoclips, VideoFileClip
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
-from vid_sample import video_to_dir, add_text_on_image, convert_jpg_to_mp4
+# from vid_sample import video_to_dir, add_text_on_image, convert_jpg_to_mp4
+from utils import video_to_dir, add_text_on_image, convert_jpg_to_mp4
 from typing import List, Dict, Tuple
 
 def add_text_to_video(input_file: str, output_file: str, text_instructions: list[Dict]):
