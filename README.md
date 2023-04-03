@@ -51,4 +51,6 @@ pip install requirements.txt
 python main.py
 ```
 
-Example ![Alt Text](https://github.com/isayahc/video-text/blob/main/assets/screenshots/cap1.PNG)
+![Alt Text](https://github.com/isayahc/video-text/blob/main/assets/screenshots/cap1.PNG)
+![Alt Text](https://github.com/isayahc/video-text/blob/main/assets/screenshots/cap2.PNG)
+![Alt Text](https://github.com/isayahc/video-text/blob/main/assets/screenshots/cap3.PNG)
