@@ -2,11 +2,10 @@ import os
 import tempfile
 from moviepy.editor import concatenate_videoclips, VideoFileClip
 from moviepy.video.io.ffmpeg_tools import ffmpeg_extract_subclip
-
 from utils import video_to_dir, add_text_on_image, convert_jpg_to_mp4
 from typing import List, Dict, Tuple
 
-def add_text_to_video(input_file: str, output_file: str, text_instructions: List[Dict]):
+def add_text_to_video(input_file: str, output_file: str, text_instructions: List[Dict], overwrite: bool = False):
     """
     Add text to specific segments of a video.
 
@@ -21,7 +20,16 @@ def add_text_to_video(input_file: str, output_file: str, text_instructions: List
             - text: str, text to be added to the segment.
             - font_file_location: str, path to the font file.
             - font_size: int, size of the font.
+    :param overwrite: bool, optional
+        If True, overwrite the output file if it already exists. Default is False.
     """
+    # Check if the output file already exists and overwrite is True
+    if os.path.exists(output_file) and overwrite:
+        os.remove(output_file)
+    # If the output file exists and overwrite is False, raise an error
+    elif os.path.exists(output_file):
+        raise ValueError(f"Output file {output_file} already exists. Set 'overwrite' parameter to True to overwrite the file.")
+
     video_clips = []
 
     for instruction in text_instructions:
@@ -29,8 +37,6 @@ def add_text_to_video(input_file: str, output_file: str, text_instructions: List
         video_clips.append(modified_subclip)
 
     concatenate_and_save_clips(video_clips, output_file)
-
-
 
 
 def process_subclip(input_file: str, instruction: dict) -> str:
@@ -75,6 +81,7 @@ def process_subclip(input_file: str, instruction: dict) -> str:
             # Return the path of the modified subclip
             return subclip_output
 
+
 def concatenate_and_save_clips(video_clips: List[str], output_file: str) -> None:
     """
     Concatenates a list of video clips and saves the final video to the output file.
@@ -96,18 +103,31 @@ def concatenate_and_save_clips(video_clips: List[str], output_file: str) -> None
         os.remove(clip)
 
 def main():
-    input_file = 'output_video.mp4'
+    text_1 = "The West Indies is a subregion of North America, surrounded by the North Atlantic Ocean and the Caribbean Sea, which comprises 13 independent island countries, 18 dependencies, and three archipelagos: the Greater Antilles, the Lesser Antilles, and the Lucayan Archipelago. "
+    text_2 =  text_1 + "The subregion includes all the islands in the Antilles, plus The Bahamas and the Turks and Caicos Islands, which are in the North Atlantic Ocean. "
+    text_3 = text_2 + (
+            "Nowadays, the term West Indies is often interchangeable with the term Caribbean. "
+            "However, the term Caribbean may also include some Central and South American mainland nations which have Caribbean coastlines, such as Belize, French Guiana, Guyana, and Suriname, as well as the Atlantic island nations of Barbados, Bermuda, and Trinidad and Tobago. "
+            "These countries are geographically distinct from the three main island groups, but culturally related.")
+    
+
+    input_file = 'input_video.mp4'
     output_file = 'output_video2.mp4'
+
+    font_file = 'assets\Roboto\Roboto-Bold.ttf'
+    font_size = 50
+    stroke_width = 1
+
     text_instructions = [
         {
             "start": 0,
             "end": 5,
-            "text": "Intro",
-            "font_file_location": "Roboto/Roboto-Regular.ttf",
-            "font_size": 30,
+            "text": text_1,
+            "font_file_location": font_file,
+            "font_size": font_size,
             "text_body_position": (50, 50),
-            "text_color": (255, 255, 255),
-            "stroke": 2,
+            "text_color": (0, 0, 0),
+            "stroke": stroke_width,
             "stroke_color": (0, 0, 0),
             "shadow": (4, 4),
             "shadow_color": (0, 0, 0)
@@ -115,12 +135,12 @@ def main():
         {
             "start": 5,
             "end": 10,
-            "text": "Intro Main Part",
-            "font_file_location": "Roboto/Roboto-Regular.ttf",
-            "font_size": 30,
+            "text": text_2,
+            "font_file_location": font_file,
+            "font_size": font_size,
             "text_body_position": (50, 50),
-            "text_color": (255, 255, 255),
-            "stroke": 2,
+            "text_color": (0, 0, 0),
+            "stroke": stroke_width,
             "stroke_color": (0, 0, 0),
             "shadow": (4, 4),
             "shadow_color": (0, 0, 0)
@@ -128,19 +148,19 @@ def main():
         {
             "start": 10,
             "end": 15,
-            "text": "Intro Main Part Conclusion",
-            "font_file_location": "Roboto/Roboto-Regular.ttf",
-            "font_size": 30,
+            "text": text_3,
+            "font_file_location": font_file,
+            "font_size": font_size,
             "text_body_position": (50, 50),
-            "text_color": (255, 255, 255),
-            "stroke": 2,
+            "text_color": (0, 0, 0),
+            "stroke": stroke_width,
             "stroke_color": (0, 0, 0),
             "shadow": (4, 4),
             "shadow_color": (0, 0, 0)
         }
     ]
 
-    add_text_to_video(input_file, output_file, text_instructions)
+    add_text_to_video(input_file, output_file, text_instructions,overwrite=True)
 
 
 if __name__ == '__main__':

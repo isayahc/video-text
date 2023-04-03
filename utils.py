@@ -177,3 +177,4 @@ def convert_jpg_to_mp4(ref_video_path: Path, output_file: Path, input_directory:
 
     subprocess.run(cmd, check=True)
     os.chdir(original_dir)
+
