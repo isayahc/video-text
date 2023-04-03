@@ -1,12 +1,6 @@
-# README.md
-
-## Video Text Overlay
-
-This Python script allows you to add text overlays to specific segments of a video. Unlike Textwrap, you can append to the text on the current screen and the position of the original text will remain constant. You can provide multiple text instructions to add text to different parts of the video.
-
 # Video Text Overlay
 
-This Python script allows you to add text overlays to specific segments of a video. You can provide multiple text instructions to add text to different parts of the video.
+This Python script allows you to add text overlays to specific segments of a video. Unlike Textwrap, you can append to the text on the current screen and the position of the original text will remain constant. You can provide multiple text instructions to add text to different parts of the video.
 
 ## Requirements
 
