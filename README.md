@@ -53,4 +53,4 @@ python main.py
 
 ![Alt Text](https://github.com/isayahc/video-text/blob/main/assets/screenshots/cap1.PNG)
 ![Alt Text](https://github.com/isayahc/video-text/blob/main/assets/screenshots/cap2.PNG)
-![Alt Text](https://github.com/isayahc/video-text/blob/main/assets/screenshots/cap3.PNG)
+![Alt Text](https://github.com/isayahc/video-text/blob/main/assets/screenshots/cap3.png)
