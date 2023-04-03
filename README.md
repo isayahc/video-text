@@ -50,3 +50,5 @@ pip install requirements.txt
 ```bash
 python main.py
 ```
+
+Example ![Alt Text](https://github.com/isayahc/video-text/blob/main/assets/screenshots/cap1.PNG)
