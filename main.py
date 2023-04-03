@@ -20,6 +20,13 @@ def add_text_to_video(input_file: str, output_file: str, text_instructions: List
             - text: str, text to be added to the segment.
             - font_file_location: str, path to the font file.
             - font_size: int, size of the font.
+            - text_body_position: tuple, the position of the text on the frame (x, y).
+            - text_color: tuple, RGB color of the text.
+            - stroke: int, width of the stroke around the text.
+            - stroke_color: tuple, RGB color of the stroke.
+            - shadow: tuple, the shadow offset (x, y).
+            - shadow_color: tuple, RGB color of the shadow.
+        Each instruction dictionary can contain the same arguments as the `add_text_on_image` function.
     :param overwrite: bool, optional
         If True, overwrite the output file if it already exists. Default is False.
     """
