@@ -16,7 +16,7 @@ This Python script allows you to add text overlays to specific segments of a vid
 ```python
 python -m venv venv
 activate
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Usage
