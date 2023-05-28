@@ -15,8 +15,11 @@ venv/
 *.mp4
 *.mp3
 
-#other
+# Other
 /data_sample
 /Roboto
 /temp
 /videos
+
+# IDE specific
+.vscode/
